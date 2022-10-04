@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="card mt-5">
+      <div class="card-body">
+        <h5 class="card-title">Consulta de Clientes</h5>
+        <p class="card-text">Listagem de Clientes cadastrados.</p>
+        <hr />
+ 
+        <div class="mb-3">
+            <strong>{{mensagem}}</strong>
+        </div>
+       
+        <table class="table table-sm table-hover">
+            <thead>
+                <tr>
+                    <th>Nome do Cliente</th>
+                    <th>E-mail</th>
+                    <th>Cpf</th>
+                    <th>Operações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let c of clientes">
+                    <td>{{c.nome}}</td>
+                    <td>{{c.email}}</td>
+                    <td>{{c.cpf}}</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm"
+                            [routerLink]="['/cliente-edicao', c.idCliente]">
+                            Editar
+                        </button>
+                        &nbsp;
+                        <button class="btn btn-danger btn-sm"
+                            (click)="onDelete(c.idCliente)">
+                            Excluir
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3">
+                        Quantidade de Clientes: {{clientes.length}}
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+         
+      </div>
+    </div>
+  </div>
+
+
